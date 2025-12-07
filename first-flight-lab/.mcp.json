@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "openai-image": {
+      "command": "npx",
+      "args": ["tsx", "/Users/markau/mcp-servers/openai-image/index.ts"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    }
+  }
+}

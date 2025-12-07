@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <!-- Background - desk surface -->
+  <rect width="600" height="400" fill="#F3F4F6"/>
+
+  <!-- Card 1 - Take-off mission -->
+  <g transform="translate(80, 60) rotate(-8)">
+    <rect width="140" height="180" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="10" y="10" width="120" height="80" rx="4" fill="#DBEAFE"/>
+    <!-- Plane icon -->
+    <path d="M70 40 L85 55 L70 70 L55 55 Z" fill="#2563EB"/>
+    <rect x="60" y="50" width="30" height="10" rx="2" fill="#2563EB"/>
+    <!-- Arrow up -->
+    <path d="M70 75 L70 85 M65 80 L70 75 L75 80" stroke="#2563EB" stroke-width="2" fill="none"/>
+    <!-- Text lines -->
+    <rect x="15" y="100" width="80" height="6" rx="2" fill="#9CA3AF"/>
+    <rect x="15" y="112" width="100" height="4" rx="2" fill="#D1D5DB"/>
+    <rect x="15" y="122" width="90" height="4" rx="2" fill="#D1D5DB"/>
+    <!-- Stars -->
+    <circle cx="25" cy="155" r="6" fill="#FCD34D"/>
+    <circle cx="45" cy="155" r="6" fill="#E5E7EB"/>
+    <circle cx="65" cy="155" r="6" fill="#E5E7EB"/>
+  </g>
+
+  <!-- Card 2 - Figure eight mission -->
+  <g transform="translate(230, 80) rotate(3)">
+    <rect width="140" height="180" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="10" y="10" width="120" height="80" rx="4" fill="#D1FAE5"/>
+    <!-- Figure 8 path -->
+    <path d="M40 50 C40 30, 70 30, 70 50 C70 70, 100 70, 100 50 C100 30, 70 30, 70 50 C70 70, 40 70, 40 50"
+          stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Small plane on path -->
+    <circle cx="55" cy="40" r="4" fill="#059669"/>
+    <!-- Text lines -->
+    <rect x="15" y="100" width="90" height="6" rx="2" fill="#9CA3AF"/>
+    <rect x="15" y="112" width="100" height="4" rx="2" fill="#D1D5DB"/>
+    <rect x="15" y="122" width="70" height="4" rx="2" fill="#D1D5DB"/>
+    <!-- Stars -->
+    <circle cx="25" cy="155" r="6" fill="#FCD34D"/>
+    <circle cx="45" cy="155" r="6" fill="#FCD34D"/>
+    <circle cx="65" cy="155" r="6" fill="#E5E7EB"/>
+  </g>
+
+  <!-- Card 3 - Rescue run mission -->
+  <g transform="translate(380, 50) rotate(-3)">
+    <rect width="140" height="180" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+    <rect x="10" y="10" width="120" height="80" rx="4" fill="#FEE2E2"/>
+    <!-- Sofa icon -->
+    <rect x="25" y="55" width="30" height="20" rx="4" fill="#EF4444"/>
+    <!-- Rug icon -->
+    <rect x="85" y="55" width="25" height="20" rx="2" fill="#EF4444"/>
+    <!-- Arrow between -->
+    <path d="M60 65 L80 65 M75 60 L80 65 L75 70" stroke="#EF4444" stroke-width="2" fill="none"/>
+    <!-- Plane -->
+    <circle cx="70" cy="45" r="5" fill="#DC2626"/>
+    <!-- Text lines -->
+    <rect x="15" y="100" width="70" height="6" rx="2" fill="#9CA3AF"/>
+    <rect x="15" y="112" width="100" height="4" rx="2" fill="#D1D5DB"/>
+    <rect x="15" y="122" width="85" height="4" rx="2" fill="#D1D5DB"/>
+    <!-- Stars -->
+    <circle cx="25" cy="155" r="6" fill="#FCD34D"/>
+    <circle cx="45" cy="155" r="6" fill="#FCD34D"/>
+    <circle cx="65" cy="155" r="6" fill="#FCD34D"/>
+  </g>
+
+  <!-- Scattered small props -->
+  <circle cx="50" cy="320" r="15" fill="#DBEAFE" opacity="0.5"/>
+  <rect x="520" y="300" width="40" height="30" rx="4" fill="#E5E7EB" opacity="0.5"/>
+</svg>
