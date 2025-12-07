@@ -8,9 +8,64 @@ export const siteConfig = {
 export const navigation = {
   links: [
     { label: 'Home', href: '/' },
+    { label: 'Products', href: '/products' },
     { label: 'Missions', href: '/missions' },
     { label: 'Safety', href: '/safety' },
   ],
+};
+
+export const products = [
+  {
+    id: 'starter-bundle',
+    slug: 'starter-bundle',
+    name: 'First Flight Lab Jet – Starter Bundle',
+    price: 5999,
+    description: 'Everything you need for your child\'s first indoor flight.',
+    features: [
+      '1 foam RC jet',
+      'Beginner-mode controller',
+      '2 rechargeable batteries',
+      'Mission card pack',
+      '30-day Crash Comfort guarantee',
+    ],
+    image: '/products/starter-bundle.png',
+  },
+  {
+    id: 'pro-bundle',
+    slug: 'pro-bundle',
+    name: 'First Flight Lab Jet – Pro Bundle',
+    price: 8999,
+    description: 'Extended flight time and extra protection for serious young pilots.',
+    features: [
+      'Everything in Starter Bundle',
+      '4 rechargeable batteries (2 extra)',
+      'Replacement foam shell',
+      'Advanced mission card pack',
+      'Carry case',
+    ],
+    image: '/products/pro-bundle.png',
+  },
+  {
+    id: 'family-pack',
+    slug: 'family-pack',
+    name: 'First Flight Lab – Family Pack',
+    price: 14999,
+    description: 'Two jets for siblings or parent-child races!',
+    features: [
+      '2 foam RC jets',
+      '2 controllers',
+      '6 rechargeable batteries',
+      '2 replacement foam shells',
+      'Complete mission card collection',
+      '2 carry cases',
+    ],
+    image: '/products/family-pack.png',
+  },
+];
+
+export const shippingConfig = {
+  flatRate: 799,
+  label: 'Standard Shipping (5-7 business days)',
 };
 
 export const heroContent = {

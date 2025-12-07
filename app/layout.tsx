@@ -1,36 +1,62 @@
 import type { Metadata } from 'next';
+import { Nunito, Inter } from 'next/font/google';
 import './globals.css';
 import { siteConfig, navigation, footer } from './content';
 import Link from 'next/link';
+import { CartProvider } from './context/CartContext';
+import { createClient } from '@/lib/supabase/server';
+import { HeaderClient } from './components/HeaderClient';
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-nunito',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} – ${siteConfig.tagline}`,
   description: siteConfig.description,
 };
 
-function Header() {
+async function Header() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <header className="sticky top-0 z-50 glass border-b border-primary-100/50">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
             href="/"
-            className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+            className="text-xl font-display font-bold text-slate-900 hover:text-primary-600 transition-colors"
           >
             {siteConfig.name}
           </Link>
-          <ul className="flex items-center gap-6">
-            {navigation.links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+          <div className="flex items-center gap-6">
+            <ul className="hidden sm:flex items-center gap-6">
+              {navigation.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <HeaderClient user={user ? { email: user.email || '' } : null} />
+          </div>
         </div>
       </nav>
     </header>
@@ -39,26 +65,31 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <nav>
-            <ul className="flex items-center gap-6">
-              {navigation.links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+    <footer className="bg-surface border-t border-primary-100/50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <Link href="/" className="text-lg font-display font-bold text-slate-900">
+              {siteConfig.name}
+            </Link>
+            <nav>
+              <ul className="flex items-center gap-6">
+                {navigation.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-slate-500 hover:text-primary-600 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
           <div className="text-center sm:text-right">
-            <p className="text-sm text-gray-500">{footer.copyright}</p>
-            <p className="text-xs text-gray-400 mt-1">{footer.disclaimer}</p>
+            <p className="text-sm text-slate-500">{footer.copyright}</p>
+            <p className="text-xs text-slate-400 mt-1">{footer.disclaimer}</p>
           </div>
         </div>
       </div>
@@ -72,11 +103,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${nunito.variable} ${inter.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
