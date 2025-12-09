@@ -189,3 +189,29 @@ html {
   background-size: 200% 200%;
   animation: gradientShift 3s ease infinite;
 }
+
+/* Shimmer text animation */
+@keyframes shimmer {
+  0%, 90%, 100% {
+    background-position: 150% center;
+  }
+  40%, 50% {
+    background-position: -50% center;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #0f172a 0%,
+    #0f172a 45%,
+    #60a5fa 50%,
+    #0f172a 55%,
+    #0f172a 100%
+  );
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}

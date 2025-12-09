@@ -2,7 +2,7 @@ type SectionProps = {
   id?: string;
   className?: string;
   children: React.ReactNode;
-  background?: 'white' | 'soft' | 'warm' | 'gradient';
+  background?: 'white' | 'soft' | 'warm' | 'gradient' | 'dark';
 };
 
 const bgStyles = {
@@ -10,6 +10,7 @@ const bgStyles = {
   soft: 'bg-surface',
   warm: 'bg-surface-warm',
   gradient: 'bg-gradient-sky',
+  dark: 'bg-slate-900',
 };
 
 export function Section({
@@ -29,18 +30,20 @@ export function SectionHeader({
   title,
   subtitle,
   centered = true,
+  light = false,
 }: {
   title: string;
   subtitle?: string;
   centered?: boolean;
+  light?: boolean;
 }) {
   return (
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
-      <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900">
+      <h2 className={`text-3xl sm:text-4xl font-display font-bold ${light ? 'text-white' : 'text-slate-900'}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">{subtitle}</p>
+        <p className={`mt-4 text-lg max-w-2xl mx-auto ${light ? 'text-slate-300' : 'text-slate-600'}`}>{subtitle}</p>
       )}
     </div>
   );

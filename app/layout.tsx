@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { CartProvider } from './context/CartContext';
 import { createClient } from '@/lib/supabase/server';
 import { HeaderClient } from './components/HeaderClient';
+import { Logo } from './components/Logo';
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -36,9 +37,10 @@ async function Header() {
         <div className="flex items-center justify-between h-16">
           <Link
             href="/"
-            className="text-xl font-display font-bold text-slate-900 hover:text-primary-600 transition-colors"
+            className="flex items-center gap-2 text-xl font-display font-bold text-slate-900 hover:text-primary-600 transition-colors"
           >
-            {siteConfig.name}
+            <Logo className="w-8 h-8" />
+            <span className="shimmer-text">{siteConfig.name}</span>
           </Link>
 
           <div className="flex items-center gap-6">
@@ -69,7 +71,8 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <Link href="/" className="text-lg font-display font-bold text-slate-900">
+            <Link href="/" className="flex items-center gap-2 text-lg font-display font-bold text-slate-900">
+              <Logo className="w-6 h-6" />
               {siteConfig.name}
             </Link>
             <nav>

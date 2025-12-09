@@ -81,21 +81,19 @@ function Hero() {
 
           <div className="order-1 lg:order-2">
             <FadeInImmediate direction="right" delay={0.2}>
-              <motion.div
-                variants={floatAnimation}
-                animate="animate"
-                className="relative"
-              >
+              <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary-200 to-secondary-200 rounded-3xl blur-2xl opacity-40" />
-                <Image
-                  src="/hero-family-flight.png"
-                  alt="Parent and child playing with a foam RC jet in a bright modern living room"
-                  width={600}
-                  height={400}
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="relative w-full h-auto rounded-2xl shadow-xl"
-                  priority
-                />
-              </motion.div>
+                >
+                  <source src="/hero-video.webm" type="video/webm" />
+                  <source src="/hero-video.mp4" type="video/mp4" />
+                </video>
+              </div>
             </FadeInImmediate>
           </div>
         </div>
@@ -140,6 +138,98 @@ function HowItWorksSection() {
           </StaggerItem>
         ))}
       </StaggerContainer>
+    </Section>
+  );
+}
+
+function JetDiagram() {
+  return (
+    <div className="flex flex-col items-center gap-6">
+      {/* Top View */}
+      <div className="relative">
+        <Image
+          src="/jet-top.webp"
+          alt="Top view of First Flight Lab RC jet"
+          width={350}
+          height={350}
+          className="w-full max-w-[350px]"
+        />
+        {/* Height dimension */}
+        <div className="absolute left-0 top-0 bottom-0 flex items-center -translate-x-8">
+          <div className="relative h-full flex items-center">
+            <div className="h-full border-l border-dashed border-slate-400" />
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 text-slate-400 text-sm whitespace-nowrap">24cm</span>
+          </div>
+        </div>
+        {/* Width dimension */}
+        <div className="absolute bottom-0 left-0 right-0 translate-y-6 flex justify-center">
+          <div className="relative w-full flex justify-center items-center">
+            <div className="w-full border-t border-dashed border-slate-400" />
+            <span className="absolute text-slate-400 text-sm bg-slate-900 px-2">25.5cm</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Front View */}
+      <div className="relative mt-8">
+        <Image
+          src="/jet-front.webp"
+          alt="Front view of First Flight Lab RC jet"
+          width={350}
+          height={100}
+          className="w-full max-w-[350px]"
+        />
+        {/* Height dimension */}
+        <div className="absolute left-0 top-0 bottom-0 flex items-center -translate-x-8">
+          <div className="relative h-full flex items-center">
+            <div className="h-full border-l border-dashed border-slate-400" />
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 text-slate-400 text-sm whitespace-nowrap">4.2cm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SpecsSection() {
+  const specs = [
+    { label: 'Dimensions', value: '25.5 × 24 × 4.2 cm' },
+    { label: 'Weight', value: '85g (ultra-light)' },
+    { label: 'Material', value: 'EPP Foam' },
+    { label: 'Flight Time', value: '8-10 minutes' },
+    { label: 'Charge Time', value: '45 minutes' },
+    { label: 'Range', value: '30m indoor' },
+  ];
+
+  return (
+    <Section background="dark">
+      <FadeIn>
+        <SectionHeader title="Technical Specs" light />
+      </FadeIn>
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <FadeIn direction="left">
+          <div className="bg-slate-900/50 rounded-2xl p-8 border border-slate-700/50">
+            <JetDiagram />
+          </div>
+        </FadeIn>
+        <FadeIn direction="right" delay={0.2}>
+          <div className="grid grid-cols-2 gap-4">
+            {specs.map((spec, index) => (
+              <motion.div
+                key={spec.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl p-4 border border-primary-100 shadow-soft"
+              >
+                <p className="text-sm text-slate-500 mb-1">{spec.label}</p>
+                <p className="text-lg font-display font-bold text-slate-900">{spec.value}</p>
+              </motion.div>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
     </Section>
   );
 }
@@ -244,6 +334,7 @@ export default function HomePage() {
       <Hero />
       <WhySection />
       <HowItWorksSection />
+      <SpecsSection />
       <ForKidsSection />
       <TestimonialsSection />
       <BuySection />

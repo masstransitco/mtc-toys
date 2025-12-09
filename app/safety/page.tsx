@@ -48,14 +48,17 @@ function SafetySections() {
   return (
     <Section background="soft">
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 text-center mb-8">
           <Image
-            src="/safety-diagram.png"
-            alt="Top-down view of a living room with marked flight zone and furniture layout"
-            width={800}
+            src="/hand-take-off.png"
+            alt="Safe palm launch - plane takes off gently from your hand"
+            width={600}
             height={400}
-            className="w-full max-w-3xl mx-auto h-auto rounded-lg mb-8"
+            className="w-full max-w-xl mx-auto h-auto rounded-lg shadow-md"
           />
+          <p className="mt-3 text-sm text-gray-600 font-medium">
+            Safe palm launch – no runways needed
+          </p>
         </div>
         {safetyContent.sections.map((section) => (
           <SafetySection key={section.title} section={section} />
