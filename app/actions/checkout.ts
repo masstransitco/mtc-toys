@@ -158,15 +158,7 @@ export async function getOrderBySessionId(sessionId: string) {
 
   const { data: order, error } = await supabase
     .from('ffl_orders')
-    .select(`
-      *,
-      ffl_order_items (
-        id,
-        product_id,
-        quantity,
-        price
-      )
-    `)
+    .select('*')
     .eq('stripe_session_id', sessionId)
     .eq('user_id', user.id)
     .single()
@@ -175,7 +167,16 @@ export async function getOrderBySessionId(sessionId: string) {
     return { error: 'Order not found' }
   }
 
-  return { order }
+  const { data: items, error: itemsError } = await supabase
+    .from('ffl_order_items')
+    .select('id, product_id, quantity, price')
+    .eq('order_id', order.id)
+
+  if (itemsError) {
+    console.error('Error fetching order items:', itemsError?.message ?? itemsError)
+  }
+
+  return { order: { ...order, ffl_order_items: items || [] } }
 }
 
 export async function getUserAddresses() {
