@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface SocialShareButtonsProps {
   url: string
@@ -11,6 +11,11 @@ interface SocialShareButtonsProps {
 
 export function SocialShareButtons({ url, title, description, image }: SocialShareButtonsProps) {
   const [copied, setCopied] = useState(false)
+  const [canNativeShare, setCanNativeShare] = useState(false)
+
+  useEffect(() => {
+    setCanNativeShare(typeof navigator !== 'undefined' && !!navigator.share)
+  }, [])
 
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
@@ -37,8 +42,6 @@ export function SocialShareButtons({ url, title, description, image }: SocialSha
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
-
-  const canNativeShare = typeof navigator !== 'undefined' && navigator.share
 
   return (
     <div className="flex items-center gap-3">

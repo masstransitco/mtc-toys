@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { products } from '@/app/content'
@@ -8,6 +7,7 @@ import { CheckIcon } from '@/app/components'
 import { ProductAnalytics } from '@/app/components/ProductAnalytics'
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/structured-data'
 import { SocialShareButtons } from '@/app/components/SocialShareButtons'
+import { ProductImageGallery } from '@/app/components/ProductImageGallery'
 
 const SITE_URL = 'https://www.firstflightlab.com'
 
@@ -85,16 +85,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Product Image */}
-            <div className="aspect-square bg-gray-50 rounded-xl overflow-hidden relative">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+            {/* Product Images */}
+            <ProductImageGallery
+              images={product.images || [product.image]}
+              productName={product.name}
+            />
 
             {/* Product Info */}
             <div>

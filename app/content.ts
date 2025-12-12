@@ -16,50 +16,36 @@ export const navigation = {
 
 export const products = [
   {
-    id: 'starter-bundle',
-    slug: 'starter-bundle',
-    name: 'Indoor RC Plane for Kids – Starter Bundle',
+    id: 'blue-jet',
+    slug: 'blue-jet',
+    name: 'First Flight Lab Jet – Blue',
     price: 5999,
-    description: 'The perfect beginner RC airplane for kids ages 5+. Includes foam jet, easy-to-use controller, and mission cards for indoor flying.',
+    description: 'The perfect beginner RC airplane for kids ages 5+. Crash-resistant foam jet with easy-to-use controller, designed for indoor flying.',
     features: [
-      '1 crash-resistant foam RC jet',
+      '1 crash-resistant foam RC jet (Blue)',
       'Beginner-mode controller with easy controls',
       '2 rechargeable batteries (16-20 min flight time)',
       'Mission card pack for guided flying activities',
       '30-day Crash Comfort guarantee',
     ],
-    image: '/products/starter-bundle.png',
+    image: '/products/blue-main.png',
+    images: ['/products/blue-main.png', '/products/blue-1.png'],
   },
   {
-    id: 'pro-bundle',
-    slug: 'pro-bundle',
-    name: 'Indoor RC Plane for Kids – Pro Bundle',
-    price: 8999,
-    description: 'Best-selling RC plane bundle for kids with extended flight time. Perfect for young pilots ready for more indoor flying adventures.',
+    id: 'black-jet',
+    slug: 'black-jet',
+    name: 'First Flight Lab Jet – Black',
+    price: 5999,
+    description: 'The perfect beginner RC airplane for kids ages 5+. Crash-resistant foam jet with easy-to-use controller, designed for indoor flying.',
     features: [
-      'Everything in Starter Bundle',
-      '4 rechargeable batteries (32-40 min total flight time)',
-      'Replacement foam shell for crash protection',
-      'Advanced mission card pack with 20+ challenges',
-      'Carry case for storage and travel',
+      '1 crash-resistant foam RC jet (Black)',
+      'Beginner-mode controller with easy controls',
+      '2 rechargeable batteries (16-20 min flight time)',
+      'Mission card pack for guided flying activities',
+      '30-day Crash Comfort guarantee',
     ],
-    image: '/products/pro-bundle.png',
-  },
-  {
-    id: 'family-pack',
-    slug: 'family-pack',
-    name: 'Indoor RC Planes – Family Pack (2 Jets)',
-    price: 14999,
-    description: 'Two complete RC plane sets for siblings or parent-child flying. Race, challenge, and learn together with beginner-friendly foam jets.',
-    features: [
-      '2 crash-resistant foam RC jets',
-      '2 beginner-mode controllers',
-      '6 rechargeable batteries (48-60 min total flight time)',
-      '2 replacement foam shells',
-      'Complete mission card collection (30+ activities)',
-      '2 carry cases',
-    ],
-    image: '/products/family-pack.png',
+    image: '/products/black-main.png',
+    images: ['/products/black-main.png', '/products/black-1.png'],
   },
 ];
 
@@ -151,16 +137,16 @@ export const testimonials = [
 
 export const buySection = {
   heading: 'Ready for your child\'s first indoor flight?',
-  productName: 'First Flight Lab Jet – Starter Bundle',
+  productName: 'First Flight Lab Jet',
   features: [
-    '1 foam RC jet',
+    '1 crash-resistant foam RC jet',
     'Beginner-mode controller',
     '2 rechargeable batteries',
-    'Mission card pack (printable + in-box)',
-    '30-day Crash Comfort replacement foam',
+    'Mission card pack',
+    '30-day Crash Comfort guarantee',
   ],
-  price: 'From $59.99',
-  ctaLabel: 'Join the launch list',
+  price: '$59.99',
+  ctaLabel: 'Shop Now',
 };
 
 export const missionsContent = {
