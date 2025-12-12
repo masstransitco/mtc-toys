@@ -7,6 +7,7 @@ import { CartProvider } from './context/CartContext';
 import { createClient } from '@/lib/supabase/server';
 import { HeaderClient } from './components/HeaderClient';
 import { Logo } from './components/Logo';
+import { LayoutWrapper } from './components/LayoutWrapper';
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -109,9 +110,9 @@ export default function RootLayout({
     <html lang="en" className={`${nunito.variable} ${inter.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         <CartProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <LayoutWrapper header={<Header />} footer={<Footer />}>
+            {children}
+          </LayoutWrapper>
         </CartProvider>
       </body>
     </html>

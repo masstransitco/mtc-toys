@@ -1,0 +1,8 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Paper airplane body -->
+  <path d="M42 12L18 24L22 28L42 12Z" fill="#3b82f6"/>
+  <path d="M42 12L22 28L24 36L42 12Z" fill="#2563eb"/>
+  <path d="M42 12L18 24L14 20L42 12Z" fill="#60a5fa"/>
+  <!-- Highlight -->
+  <path d="M42 12L28 20L24 18L42 12Z" fill="#93c5fd" opacity="0.5"/>
+</svg>

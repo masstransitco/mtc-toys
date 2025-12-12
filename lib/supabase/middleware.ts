@@ -45,6 +45,29 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // Admin routes - require admin email
+  const adminPaths = ['/admin']
+  const isAdminPath = adminPaths.some((path) =>
+    request.nextUrl.pathname.startsWith(path)
+  )
+
+  if (isAdminPath) {
+    if (!user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      url.searchParams.set('redirect', request.nextUrl.pathname)
+      return NextResponse.redirect(url)
+    }
+
+    // Admin email allowlist (duplicated here since we can't import server modules in middleware)
+    const ADMIN_EMAILS = ['mark@forevercompanies.com', 'mark@air.city']
+    if (!ADMIN_EMAILS.includes(user.email?.toLowerCase() ?? '')) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/'
+      return NextResponse.redirect(url)
+    }
+  }
+
   // Redirect logged-in users away from auth pages
   const authPaths = ['/login', '/signup']
   const isAuthPath = authPaths.some((path) =>
