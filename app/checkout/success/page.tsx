@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState, Suspense } from 'react'
+import { useEffect, useState, Suspense, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { getOrderBySessionId } from '@/app/actions/checkout'
 import { formatPrice } from '@/lib/stripe'
 import { products } from '@/app/content'
+import { analytics } from '@/lib/analytics'
 
 interface OrderItem {
   id: string
@@ -35,6 +36,7 @@ function SuccessContent() {
   const [order, setOrder] = useState<Order | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const purchaseTracked = useRef(false)
 
   useEffect(() => {
     if (!sessionId) {
@@ -50,6 +52,21 @@ function SuccessContent() {
         setError(result.error)
       } else if (result.order) {
         setOrder(result.order)
+
+        // Track Purchase event once
+        if (!purchaseTracked.current) {
+          const orderItems = result.order.ffl_order_items.map((item: OrderItem) => {
+            const product = products.find(p => p.id === item.product_id)
+            return {
+              id: item.product_id,
+              name: product?.name || 'Product',
+              price: item.price,
+              quantity: item.quantity,
+            }
+          })
+          analytics.purchase(result.order.id, result.order.total, orderItems)
+          purchaseTracked.current = true
+        }
       }
 
       setLoading(false)

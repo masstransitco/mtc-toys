@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useCart } from '@/app/hooks/useCart'
+import { analytics } from '@/lib/analytics'
 
 interface Product {
   id: string
@@ -31,6 +32,9 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
       },
       quantity
     )
+
+    // Track AddToCart event
+    analytics.addToCart({ id: product.id, name: product.name, price: product.price }, quantity)
 
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)

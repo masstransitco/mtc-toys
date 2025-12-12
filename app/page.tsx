@@ -149,7 +149,7 @@ function JetDiagram() {
       <div className="relative">
         <Image
           src="/jet-top.webp"
-          alt="Top view of First Flight Lab RC jet"
+          alt="Top view of First Flight Lab indoor RC foam jet showing 25.5cm wingspan - perfect size for indoor flying"
           width={350}
           height={350}
           className="w-full max-w-[350px]"
@@ -174,7 +174,7 @@ function JetDiagram() {
       <div className="relative mt-8">
         <Image
           src="/jet-front.webp"
-          alt="Front view of First Flight Lab RC jet"
+          alt="Front view of First Flight Lab foam RC plane - slim 4.2cm profile for safe indoor flying"
           width={350}
           height={100}
           className="w-full max-w-[350px]"
@@ -243,7 +243,7 @@ function ForKidsSection() {
             <div className="absolute -inset-4 bg-gradient-to-r from-secondary-200 to-coral-200 rounded-3xl blur-2xl opacity-40" />
             <Image
               src="/product-jet-closeup.png"
-              alt="Close-up view of the First Flight Lab foam RC jet with controller"
+              alt="First Flight Lab foam RC jet with beginner-friendly controller - designed for kids ages 5+"
               width={500}
               height={400}
               className="relative w-full h-auto rounded-2xl shadow-large"

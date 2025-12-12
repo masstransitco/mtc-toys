@@ -4,8 +4,14 @@ import { Section, SectionHeader, CheckIcon } from '../components';
 import { safetyContent } from '../content';
 
 export const metadata: Metadata = {
-  title: 'Safety – First Flight Lab',
-  description: 'Indoor-safe design, age recommendations, and house rules for safe flying with First Flight Lab.',
+  title: 'Is RC Flying Safe for Kids? | Indoor Safety Guide',
+  description: 'Learn how First Flight Lab foam RC jets are designed for safe indoor flying. Age recommendations, supervision tips, and house rules for kids ages 5+. ASTM F963 tested.',
+  keywords: ['is RC flying safe for kids', 'indoor RC plane safety', 'safe RC toys for children', 'beginner RC plane age', 'foam RC plane safety'],
+  openGraph: {
+    title: 'RC Plane Safety for Kids | First Flight Lab',
+    description: 'Indoor-safe foam design, age 5+ recommendations, and house rules for safe flying at home.',
+    images: ['/hand-take-off.png'],
+  },
 };
 
 function SafetyHero() {

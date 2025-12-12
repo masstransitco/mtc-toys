@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: 'First Flight Lab',
-  tagline: 'Your child\'s first safe flight, in your living room.',
+  tagline: 'Indoor RC planes designed for kids ages 5+',
   description:
-    'First Flight Lab turns a gentle foam jet and a simple controller into a crash-friendly flying lesson for kids 5+ and their parents.',
+    'First Flight Lab makes beginner-friendly indoor RC foam jets for kids. Our crash-resistant planes with easy controls are perfect for living room flying. Designed for ages 5+ with parent-child mission cards.',
 };
 
 export const navigation = {
@@ -18,14 +18,14 @@ export const products = [
   {
     id: 'starter-bundle',
     slug: 'starter-bundle',
-    name: 'First Flight Lab Jet – Starter Bundle',
+    name: 'Indoor RC Plane for Kids – Starter Bundle',
     price: 5999,
-    description: 'Everything you need for your child\'s first indoor flight.',
+    description: 'The perfect beginner RC airplane for kids ages 5+. Includes foam jet, easy-to-use controller, and mission cards for indoor flying.',
     features: [
-      '1 foam RC jet',
-      'Beginner-mode controller',
-      '2 rechargeable batteries',
-      'Mission card pack',
+      '1 crash-resistant foam RC jet',
+      'Beginner-mode controller with easy controls',
+      '2 rechargeable batteries (16-20 min flight time)',
+      'Mission card pack for guided flying activities',
       '30-day Crash Comfort guarantee',
     ],
     image: '/products/starter-bundle.png',
@@ -33,30 +33,30 @@ export const products = [
   {
     id: 'pro-bundle',
     slug: 'pro-bundle',
-    name: 'First Flight Lab Jet – Pro Bundle',
+    name: 'Indoor RC Plane for Kids – Pro Bundle',
     price: 8999,
-    description: 'Extended flight time and extra protection for serious young pilots.',
+    description: 'Best-selling RC plane bundle for kids with extended flight time. Perfect for young pilots ready for more indoor flying adventures.',
     features: [
       'Everything in Starter Bundle',
-      '4 rechargeable batteries (2 extra)',
-      'Replacement foam shell',
-      'Advanced mission card pack',
-      'Carry case',
+      '4 rechargeable batteries (32-40 min total flight time)',
+      'Replacement foam shell for crash protection',
+      'Advanced mission card pack with 20+ challenges',
+      'Carry case for storage and travel',
     ],
     image: '/products/pro-bundle.png',
   },
   {
     id: 'family-pack',
     slug: 'family-pack',
-    name: 'First Flight Lab – Family Pack',
+    name: 'Indoor RC Planes – Family Pack (2 Jets)',
     price: 14999,
-    description: 'Two jets for siblings or parent-child races!',
+    description: 'Two complete RC plane sets for siblings or parent-child flying. Race, challenge, and learn together with beginner-friendly foam jets.',
     features: [
-      '2 foam RC jets',
-      '2 controllers',
-      '6 rechargeable batteries',
+      '2 crash-resistant foam RC jets',
+      '2 beginner-mode controllers',
+      '6 rechargeable batteries (48-60 min total flight time)',
       '2 replacement foam shells',
-      'Complete mission card collection',
+      'Complete mission card collection (30+ activities)',
       '2 carry cases',
     ],
     image: '/products/family-pack.png',
@@ -71,33 +71,33 @@ export const shippingConfig = {
 export const heroContent = {
   heading: 'Your child\'s first safe flight, in your living room.',
   subheading:
-    'First Flight Lab turns a gentle foam jet and a simple controller into a crash-friendly flying lesson for kids 5+ and their parents.',
-  primaryCta: { label: 'Shop the Jet', href: '#buy' },
+    'First Flight Lab foam jets are designed for living room flying. Crash-resistant, beginner-friendly controls, and guided mission cards make it the perfect first RC plane for children.',
+  primaryCta: { label: 'Shop RC Planes', href: '#buy' },
   secondaryCta: { label: 'See how it works', href: '#how-it-works' },
   trustLine:
-    'Designed for ages 5+ with adult supervision. Indoor-tuned, beginner-friendly controls.',
+    'Designed for kids ages 5+ with adult supervision. Indoor-safe foam, beginner-friendly controls.',
 };
 
 export const features = [
   {
     icon: 'shield' as const,
-    title: 'Indoor-safe foam design',
-    body: 'Lightweight EPP foam and protected fans are tuned for living rooms and playrooms, not open fields. Softer bumps, fewer tears.',
+    title: 'Crash-resistant foam RC design',
+    body: 'Lightweight EPP foam absorbs impacts without damage. Protected ducted fans keep fingers safe. Perfect for indoor flying in living rooms and playrooms.',
   },
   {
     icon: 'gauge' as const,
-    title: 'Beginner mode by default',
-    body: 'A gentle flight profile limits speed and angle so first flights feel calm and controllable, even for small hands.',
+    title: 'Beginner-friendly RC controls',
+    body: 'Beginner mode limits speed and angle so first flights feel calm and controllable. Easy-to-use controller perfect for kids ages 5 and up.',
   },
   {
     icon: 'users' as const,
-    title: 'Parent–child mission cards',
-    body: 'Guided "missions" turn flying into a shared game: take-off checklists, rescue runs, chair-gate fly-throughs, and more.',
+    title: 'Parent-child flying activities',
+    body: 'Mission cards turn RC flying into guided games: takeoff checklists, rescue runs, and obstacle courses. Learn together with 30+ activities.',
   },
   {
     icon: 'heart' as const,
-    title: 'Crash comfort guarantee',
-    body: 'If your child cracks the foam in the first 30 days, we\'ll send a replacement foam shell from our Oops Kit.',
+    title: '30-day crash guarantee',
+    body: 'If your child damages the foam in the first 30 days, we\'ll send a free replacement shell. Risk-free indoor flying for beginners.',
   },
 ];
 

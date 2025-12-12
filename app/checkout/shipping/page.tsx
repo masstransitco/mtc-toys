@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useCart } from '@/app/hooks/useCart'
 import { CartSummary } from '@/app/components/CartSummary'
 import { getUserAddresses, saveAddress } from '@/app/actions/checkout'
+import { analytics } from '@/lib/analytics'
+import { shippingConfig } from '@/app/content'
 
 interface Address {
   id: string
@@ -27,6 +29,7 @@ export default function ShippingPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
+  const checkoutTracked = useRef(false)
 
   const [newAddress, setNewAddress] = useState({
     label: '',
@@ -42,6 +45,22 @@ export default function ShippingPage() {
     if (items.length === 0) {
       router.push('/cart')
       return
+    }
+
+    // Track InitiateCheckout event once
+    if (!checkoutTracked.current && items.length > 0) {
+      const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+      const total = subtotal + shippingConfig.flatRate
+      analytics.initiateCheckout(
+        items.map(item => ({
+          id: item.productId,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+        total
+      )
+      checkoutTracked.current = true
     }
 
     async function fetchAddresses() {

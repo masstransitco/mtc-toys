@@ -4,8 +4,14 @@ import { Section, SectionHeader, CheckIcon } from '../components';
 import { missionsContent } from '../content';
 
 export const metadata: Metadata = {
-  title: 'Missions – First Flight Lab',
-  description: 'Mission cards give you ready-made games so you never have to invent what to do with the jet next.',
+  title: 'RC Plane Mission Cards for Kids | Flying Activities & Games',
+  description: 'Fun mission cards turn indoor RC flying into guided activities for kids. Progressive challenges from first takeoffs to rescue runs. Perfect parent-child flying games.',
+  keywords: ['RC plane activities for kids', 'flying games for children', 'RC airplane challenges', 'parent child flying activities', 'indoor RC plane games'],
+  openGraph: {
+    title: 'RC Plane Mission Cards for Kids | First Flight Lab',
+    description: 'Turn indoor RC flying into guided adventures with mission cards. Progressive challenges perfect for kids ages 5+.',
+    images: ['/mission-cards.png'],
+  },
 };
 
 function MissionsHero() {

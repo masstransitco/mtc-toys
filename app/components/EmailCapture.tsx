@@ -1,19 +1,30 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { subscribeEmail } from '@/app/actions/subscribers';
 
 export function EmailCapture({ ctaLabel }: { ctaLabel: string }) {
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Log to console for now - no backend
-    console.log('Email captured:', email);
-    setSubmitted(true);
+    setStatus('loading');
+    setErrorMsg('');
+
+    const result = await subscribeEmail(email, 'homepage');
+
+    if (result.success) {
+      setStatus('success');
+      setEmail('');
+    } else {
+      setStatus('error');
+      setErrorMsg(result.error || 'Something went wrong');
+    }
   };
 
-  if (submitted) {
+  if (status === 'success') {
     return (
       <div className="text-center py-4">
         <p className="text-green-600 font-medium">Thank you!</p>
@@ -37,14 +48,19 @@ export function EmailCapture({ ctaLabel }: { ctaLabel: string }) {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="flex-1 px-4 py-3 rounded-md border border-gray-300 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        disabled={status === 'loading'}
+        className="flex-1 px-4 py-3 rounded-md border border-gray-300 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
       />
       <button
         type="submit"
-        className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        disabled={status === 'loading'}
+        className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
       >
-        {ctaLabel}
+        {status === 'loading' ? 'Subscribing...' : ctaLabel}
       </button>
+      {status === 'error' && (
+        <p className="text-red-600 text-sm mt-2 sm:mt-0 sm:self-center">{errorMsg}</p>
+      )}
     </form>
   );
 }
