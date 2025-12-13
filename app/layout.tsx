@@ -10,6 +10,7 @@ import { Logo } from './components/Logo';
 import { LayoutWrapper } from './components/LayoutWrapper';
 import { FacebookPixel } from './components/analytics/FacebookPixel';
 import { GoogleAnalytics } from './components/analytics/GoogleAnalytics';
+import { Analytics } from '@vercel/analytics/react';
 import { generateOrganizationSchema, generateWebsiteSchema, generateFAQSchema } from '@/lib/structured-data';
 
 const nunito = Nunito({
@@ -158,6 +159,7 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col">
         <FacebookPixel />
         <GoogleAnalytics />
+        <Analytics />
         <CartProvider>
           <LayoutWrapper header={<Header />} footer={<Footer />}>
             {children}
